@@ -13,7 +13,7 @@ var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
 var dbName = Environment.GetEnvironmentVariable("DB_NAME");
 var dbPassword = Environment.GetEnvironmentVariable("DB_SA_PASSWORD");
 
-var connectionString = $"Data Source=localhost,8088;Initial Catalog={dbName};User ID=sa;Password={dbPassword};Trusted_Connection=True";
+var connectionString = $"Data Source={dbHost};Initial Catalog={dbName};User ID=sa;Password={dbPassword};Trusted_Connection=True;Encrypt=False";
 
 //var connectionString = $"Data Source={dbHost};Initial Catalog={dbName};User ID=sa;Password={dbPassword};Persist Security Info=True;Trusted_Connection = True";
 

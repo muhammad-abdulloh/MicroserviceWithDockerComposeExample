@@ -15,8 +15,8 @@ namespace School.API
             {
                 if(databaseCreator != null)
                 {
-                    if (!databaseCreator.CanConnect()) databaseCreator.Create();
-                    if (!databaseCreator.HasTables()) databaseCreator.CreateTables();
+                    if (!databaseCreator.CanConnect()) databaseCreator.CreateAsync();
+                    if (!databaseCreator.HasTables()) databaseCreator.CreateTablesAsync();
                 }
             }
             catch (Exception ex)

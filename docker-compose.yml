@@ -6,12 +6,9 @@ networks:
 
 services:
 
-  school_db:
+  schooldb:
     container_name: school-db
     image: mcr.microsoft.com/mssql/server:2022-latest
-    user: root
-    volumes:
-      - ./data:/var/opt/mssql/data/
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=pass##w00&&1Gd   
@@ -29,6 +26,6 @@ services:
     networks:
       - backend
     environment:
-      - DB_HOST= school_db
+      - DB_HOST= schooldb
       - DB_NAME = SchoolDatabase
       - DB_SA_PASSWORD = pass##w00&&1Gd 
