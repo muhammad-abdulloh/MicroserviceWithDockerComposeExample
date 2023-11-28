@@ -1,0 +1,34 @@
+version: '3.4'
+
+networks:
+  backend:
+  frontend:
+
+services:
+
+  school_db:
+    container_name: school-db
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    user: root
+    volumes:
+      - ./data:/var/opt/mssql/data/
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=pass##w00&&1Gd   
+    networks:
+      - backend
+    ports:
+      - 8088:1433
+
+  school.api:
+    container_name: school-apicontainer
+    image: ${DOCKER_REGISTRY-}schoolapi
+    build:
+      context: .
+      dockerfile: School.API/Dockerfile
+    networks:
+      - backend
+    environment:
+      - DB_HOST= school_db
+      - DB_NAME = SchoolDatabase
+      - DB_SA_PASSWORD = pass##w00&&1Gd 
